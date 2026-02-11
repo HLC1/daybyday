@@ -1,0 +1,13 @@
+[
+  {
+    "id": "zip-hoodie-drop001",
+    "title": "Zip Hoodie — Back Art",
+    "desc": "Torn calendar stack + bats. “DAY BY DAY” serif distress.",
+    "price": 65,
+    "stock": 25,
+    "badge": "DROP 001",
+    "status": "live",
+    "imgFront": "assets/hoodie-front.jpg",
+    "imgBack": "assets/hoodie-back.png"
+  }
+]

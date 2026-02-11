@@ -1,0 +1,168 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>DAY BY DAY — Clothing</title>
+    <meta name="description" content="DAY BY DAY — dark ink streetwear. Limited drops. Day by day." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Free fonts that fit the theme -->
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <!-- Grain + vignette overlay -->
+    <div class="fx" aria-hidden="true"></div>
+
+    <header class="topbar">
+        <a class="brand" href="#home" aria-label="Day by Day Home">
+            <span class="brandMark">DAY BY DAY</span>
+            <span class="brandSub"></span>
+        </a>
+        <div class="topCountdown" id="topCountdown">
+            DROP IN <span id="countdownTop">--</span>
+        </div>
+
+
+        <nav class="nav">
+            <a href="#shop">Shop</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+            <button class="cartBtn" id="cartBtn" type="button" aria-label="Open cart">
+                Cart <span class="pill" id="cartCount">0</span>
+            </button>
+            <button class="menuBtn" id="menuBtn" type="button" aria-label="Open menu">☰</button>
+        </nav>
+
+    </header>
+
+    <!-- Mobile menu -->
+    <div class="drawer" id="drawer" aria-hidden="true">
+        <div class="drawerInner">
+            <button class="drawerClose" id="drawerClose" aria-label="Close menu">✕</button>
+            <a href="#shop" class="drawerLink">Shop</a>
+            <a href="#lookbook" class="drawerLink">Lookbook</a>
+            <a href="#about" class="drawerLink">About</a>
+            <a href="#contact" class="drawerLink">Contact</a>
+            <a href="#newsletter" class="drawerLink">Newsletter</a>
+        </div>
+    </div>
+
+    <main id="home">
+        <section class="hero heroLogoCenter">
+
+            <img src="assets/logo.png" class="centerLogo" alt="Day By Day Logo">
+
+        </section>
+
+        </section>
+
+        <!-- FEATURE STRIP -->
+        <!-- SHOP -->
+        <section id="shop" class="section">
+            <div class="sectionHead">
+                <h2 class="h2">Shop</h2>
+            </div>
+
+            <div class="grid products" id="shopGrid"></div>
+        </section>
+
+
+
+
+        <!-- ABOUT -->
+        <section id="about" class="section">
+            <div class="sectionHead">
+                <h2 class="h2">About</h2>
+            </div>
+
+            <div class="aboutGrid">
+                <div class="card aboutCard">
+                    <h3>What “Day by Day” means</h3>
+                    <p class="muted">
+                        A reminder that time keeps tearing forward — and you do too.
+                        Designs pull from decay, calendars, thorns, flight, and ink.
+                    </p>
+
+                    <div class="miniGrid">
+                        <div class="mini">
+                            <div class="miniTop">Recommended</div>
+                            <div class="miniBig">DTG / Screen</div>
+                        </div>
+                        <div class="mini">
+                            <div class="miniTop">Style</div>
+                            <div class="miniBig">Ink + Distress</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <!-- CONTACT -->
+        <section id="contact" class="section">
+            <div class="sectionHead">
+                <h2 class="h2">Contact</h2>
+                <p class="sub">Collabs, stores, printing, or custom placements.</p>
+            </div>
+
+            <div class="contactGrid">
+                <div class="card">
+                    <h3>Email</h3>
+                    <p class="mono">soon</p>
+                </div>
+                <div class="card">
+                    <h3>Social</h3>
+                    <p class="muted"></p>
+                    <div class="links">
+                        <a href="#" aria-label="Instagram link">Instagram</a>
+                        <a href="#" aria-label="TikTok link">TikTok</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- CART MODAL -->
+    <div class="modal" id="cartModal" aria-hidden="true" role="dialog" aria-label="Cart">
+        <div class="modalInner">
+            <div class="modalHead">
+                <h3>Your Cart</h3>
+                <button class="iconBtn" id="closeCart" aria-label="Close cart">✕</button>
+            </div>
+
+            <div class="cartItems" id="cartItems"></div>
+
+            <div class="cartFoot">
+                <div class="row">
+                    <span class="muted">Subtotal</span>
+                    <span class="mono" id="cartTotal">$0</span>
+                </div>
+                <button class="btn primary full" id="checkoutBtn">Checkout (demo)</button>
+                <p class="tiny muted">This is a demo cart. I can wire it to Shopify / Stripe next.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footerInner">
+            <div class="footerBrand">
+                <div class="brandMark small">DAY BY DAY</div>
+                <div class="tiny muted">© <span id="year"></span> Day by Day</div>
+            </div>
+            <div class="footerLinks">
+                <a href="#shop">Shop</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

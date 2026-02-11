@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>DAY BY DAY — Admin</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .adminWrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 28px 18px 80px
+        }
+
+        .adminCard {
+            border: 1px solid rgba(255,255,255,.12);
+            background: rgba(255,255,255,.03);
+            border-radius: 18px;
+            padding: 18px;
+            box-shadow: 0 30px 90px rgba(0,0,0,.45);
+            backdrop-filter: blur(10px);
+        }
+
+        .adminGrid {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 16px;
+            align-items: start
+        }
+
+        @media (max-width: 900px) {
+            .adminGrid {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .adminTitle {
+            font-size: 22px;
+            margin: 0 0 12px;
+            letter-spacing: .02em
+        }
+
+        .muted {
+            opacity: .7
+        }
+
+        .tiny {
+            font-size: 12px;
+            opacity: .75
+        }
+
+        .field {
+            margin: 10px 0
+        }
+
+            .field label {
+                display: block;
+                font-size: 12px;
+                letter-spacing: .16em;
+                text-transform: uppercase;
+                opacity: .8;
+                margin: 0 0 8px
+            }
+
+        .input, .select, .textarea {
+            width: 100%;
+            background: rgba(0,0,0,.35);
+            border: 1px solid rgba(255,255,255,.14);
+            color: rgba(255,255,255,.9);
+            border-radius: 14px;
+            padding: 12px;
+            outline: none
+        }
+
+        .textarea {
+            min-height: 96px;
+            resize: vertical
+        }
+
+        .btnRow {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 12px
+        }
+
+        .btnA {
+            border-radius: 14px;
+            padding: 12px 14px;
+            border: 1px solid rgba(255,255,255,.14);
+            background: rgba(255,255,255,.05);
+            color: rgba(255,255,255,.92);
+            cursor: pointer;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            font-size: 12px
+        }
+
+            .btnA.primary {
+                background: rgba(255,255,255,.9);
+                color: #0a0a0b;
+                border-color: transparent
+            }
+
+            .btnA.danger {
+                background: rgba(255,0,0,.10);
+                border-color: rgba(255,0,0,.22)
+            }
+
+        .hide {
+            display: none !important
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px
+        }
+
+            .table th, .table td {
+                padding: 10px;
+                border-bottom: 1px solid rgba(255,255,255,.10);
+                text-align: left;
+                font-size: 14px;
+                vertical-align: top
+            }
+
+            .table th {
+                font-size: 12px;
+                letter-spacing: .14em;
+                text-transform: uppercase;
+                opacity: .75
+            }
+
+        .rowActions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap
+        }
+
+        .pillMini {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,.12);
+            background: rgba(0,0,0,.25);
+            font-size: 12px;
+            opacity: .85
+        }
+
+        .previewRow {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px
+        }
+
+        .previewImg {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 14px;
+            border: 1px solid rgba(255,255,255,.10);
+            background: rgba(0,0,0,.25)
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fx" aria-hidden="true"></div>
+
+    <header class="topbar">
+        <a class="brand" href="index.html#home" aria-label="Back to site">
+            <span class="brandMark">DAY BY DAY</span>
+            <span class="brandSub">admin</span>
+        </a>
+        <nav class="nav">
+            <a href="index.html#shop">Back to site</a>
+            <button class="cartBtn" id="logoutBtn" type="button">Logout</button>
+        </nav>
+    </header>
+
+    <main class="adminWrap">
+
+        <!-- LOGIN -->
+        <section class="adminCard" id="loginCard">
+            <h1 class="adminTitle">Admin Login</h1>
+            <p class="muted tiny">Client-side admin (localStorage). Not “secure” like a real backend, but works on GitHub Pages.</p>
+
+            <div class="field">
+                <label>Admin Key</label>
+                <input class="input" id="adminKey" placeholder="Enter admin key…" />
+            </div>
+
+            <div class="btnRow">
+                <button class="btnA primary" id="loginBtn" type="button">Login</button>
+            </div>
+
+            <p class="tiny muted" id="loginMsg"></p>
+        </section>
+
+        <!-- DASH -->
+        <section class="adminGrid hide" id="dash">
+
+            <!-- EDITOR -->
+            <div class="adminCard">
+                <h2 class="adminTitle" id="formTitle">Add Product</h2>
+                <input id="editId" class="input hide" />
+
+                <div class="field">
+                    <label>Title</label>
+                    <input class="input" id="title" placeholder="Zip Hoodie — Drop 001" />
+                </div>
+
+                <div class="previewRow">
+                    <div class="field">
+                        <label>Front Image Path</label>
+                        <input class="input" id="imgFront" placeholder="assets/hoodie-front.jpg" />
+                    </div>
+                    <div class="field">
+                        <label>Back Image Path</label>
+                        <input class="input" id="imgBack" placeholder="assets/hoodie-back.png" />
+                    </div>
+                </div>
+
+                <div class="previewRow">
+                    <img class="previewImg" id="prevFront" alt="Front preview">
+                    <img class="previewImg" id="prevBack" alt="Back preview">
+                </div>
+
+                <div class="previewRow">
+                    <div class="field">
+                        <label>Price</label>
+                        <input class="input" id="price" placeholder="65" inputmode="decimal" />
+                    </div>
+                    <div class="field">
+                        <label>Stock</label>
+                        <input class="input" id="stock" placeholder="25" inputmode="numeric" />
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>Badge (optional)</label>
+                    <input class="input" id="badge" placeholder="DROP 001" />
+                </div>
+
+                <div class="field">
+                    <label>Description</label>
+                    <textarea class="textarea" id="desc" placeholder="Torn calendar stack + bats…"></textarea>
+                </div>
+
+                <div class="previewRow">
+                    <div class="field">
+                        <label>Status</label>
+                        <select class="select" id="status">
+                            <option value="live">Live</option>
+                            <option value="coming_soon">Coming soon</option>
+                            <option value="hidden">Hidden</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label>SKU (optional)</label>
+                        <input class="input" id="sku" placeholder="DBD-001-ZIP" />
+                    </div>
+                </div>
+
+                <div class="btnRow">
+                    <button class="btnA primary" id="saveBtn" type="button">Save</button>
+                    <button class="btnA" id="resetBtn" type="button">Clear</button>
+                    <button class="btnA danger hide" id="deleteBtn" type="button">Delete</button>
+                </div>
+
+                <p class="tiny muted" id="saveMsg"></p>
+            </div>
+
+            <!-- LIST -->
+            <div class="adminCard">
+                <h2 class="adminTitle">Products</h2>
+                <p class="tiny muted">Saved to localStorage key <span class="pillMini">DAYBYDAY_PRODUCTS</span></p>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Price</th>
+                            <th>Stock</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="prodTbody"></tbody>
+                </table>
+
+                <div class="btnRow" style="margin-top:14px">
+                    <button class="btnA" id="exportBtn" type="button">Export JSON</button>
+                    <button class="btnA danger" id="wipeBtn" type="button">Wipe All</button>
+                </div>
+
+                <p class="tiny muted" id="exportMsg"></p>
+            </div>
+
+        </section>
+    </main>
+
+    <script src="admin.js"></script>
+</body>
+</html>
